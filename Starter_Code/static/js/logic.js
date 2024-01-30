@@ -49,7 +49,7 @@ function createMap(earthquakes) {
     position: "bottomright"
   });
 
-  // When the layer control is added, insert a div with the class of "legend".
+
   info.onAdd = function() {
     let div = L.DomUtil.create("div", "legend");
     return div;
@@ -70,18 +70,13 @@ function markerColor(depth, earthquakeData) {
 };
 
 function updateLegend(info) {
-  // Clear the legend content
   document.querySelector(".legend").innerHTML = "";
 
-  // Define depth breaks
   let depthBreaks = [-10, 10, 30, 50, 70, 90];
 
-  // Loop through depth breaks and create labels with corresponding colors
   for (let i = 0; i < depthBreaks.length; i++) {
-    // Get the color for the current depth range
     let color = markerColor(depthBreaks[i]);
 
-    // Concatenate HTML content for each legend entry
     document.querySelector(".legend").innerHTML +=
       `<div class="legend-item">
          <div class="legend-color-box" style="background-color:${color};"></div>
